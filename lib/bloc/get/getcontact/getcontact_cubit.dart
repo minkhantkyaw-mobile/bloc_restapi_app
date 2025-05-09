@@ -5,8 +5,7 @@ import 'package:bloc_restapi_app/bloc/get/getcontact/getcontact_state.dart';
 class GetcontactCubit extends Cubit<GetcontactState> {
   final ContactRepository _contactRepository;
 
-  GetcontactCubit(this._contactRepository)
-    : super(GetcontactState(isLoading: true));
+  GetcontactCubit(this._contactRepository) : super(GetContactInitial()) {}
 
   void getContact() {
     emit(GetContactInitial());
@@ -14,5 +13,13 @@ class GetcontactCubit extends Cubit<GetcontactState> {
         .getContact()
         .then((value) => emit(GetContactSuccess(value)))
         .catchError((e) => emit(GetContactFail('error')));
+  }
+
+  void delete(String id) {
+    emit(GetContactInitial());
+    _contactRepository
+        .deleteContact(id)
+        .then((value) => getContact())
+        .catchError((e) => GetContactFail(e));
   }
 }

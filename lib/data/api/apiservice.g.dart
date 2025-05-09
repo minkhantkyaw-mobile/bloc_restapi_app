@@ -10,7 +10,7 @@ part of 'apiservice.dart';
 
 class _ApiService implements ApiService {
   _ApiService(this._dio, {this.baseUrl, this.errorLogger}) {
-    baseUrl ??= 'https://6819c4321ac1155635063dee.mockapi.io/api';
+    baseUrl ??= 'https://6819c4321ac1155635063dee.mockapi.io/api/';
   }
 
   final Dio _dio;

@@ -1,9 +1,10 @@
 import 'package:bloc_restapi_app/data/model/contact.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
+import 'package:retrofit/error_logger.dart';
 part 'apiservice.g.dart';
 
-@RestApi(baseUrl: 'https://6819c4321ac1155635063dee.mockapi.io/api')
+@RestApi(baseUrl: 'https://6819c4321ac1155635063dee.mockapi.io/api/')
 abstract class ApiService {
   factory ApiService(Dio dio) => _ApiService(dio);
 
